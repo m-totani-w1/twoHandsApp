@@ -27,12 +27,11 @@ float CameraY = 0.0;            /* カメラの位置（Y座標） */
 float CameraZ = 10.0;            /* カメラの位置（Z座標） */
 float BoxRotate = 0.0;          /* 箱の回転角 */
 
-float lengthL = 2;              /* 左手の人指し指と親指の幅 */
-float lenghtR  =2;              /* 左手の人指し指と親指の幅 */
-float swipeSpead = 1;           /* スワイプするスピード */
-Vector swipeVector = {0,0,1};         /* スワイプする速度 */
-Vector swipeCenter = {1,1,0};         /* スワイプした指から中心へのベクトル */
-
+float lengthL = 1;       /* 左の一辺の長さ */
+float lengthR = 1;        /* 右の一辺の長さ */
+float swipeSpead = 1;           /* 人差し指のスワイプの速さ */
+Vector swipeVector = { 0,0,1 };          /* 右手の人差し指のスワイプの速度 */
+Vector swipeCenter = { 1,1,0 };         /* 回転体の中心方向を指すベクトル*/
 bool flag = true;
 
 //必要だろうか。。。？

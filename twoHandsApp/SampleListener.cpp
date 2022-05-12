@@ -39,7 +39,10 @@ void SampleListener::onFrame(const Controller& controller) {
             handList.count(), allFingerList.count(), gesturesInFrame.count());
 
         int i, j;
-        Vector tmpswipeVector = { 0,0,0 };
+
+        Vector tmpSwipeV;
+        float tmpSwipeS;
+
 
 
         //手と指の処理
@@ -50,7 +53,6 @@ void SampleListener::onFrame(const Controller& controller) {
 
             Vector posi0, posi1;
             Vector tmpCenter = { 0,0,0 };
-
 
 
             //個別の手の情報を出力する
@@ -64,8 +66,9 @@ void SampleListener::onFrame(const Controller& controller) {
                     posi0 = currentPosition;
                 }
                 else if (j == 1) {
-                    tmpswipeVector = finger.tipVelocity();
                     posi1 = currentPosition;
+                    tmpSwipeV = finger.tipVelocity();
+                    tmpSwipeS = tmpSwipeV.magnitude();
                 }
 
                 //個別の指の情報を出力する
@@ -73,22 +76,41 @@ void SampleListener::onFrame(const Controller& controller) {
                     j, currentPosition.x, currentPosition.y, currentPosition.z);
 
             }
-
-
             if (hand.isLeft()) {
-                lengthL = posi0.distanceTo(posi1) / 25;
-                swipeCenter = (posi0 + posi1) / 2;
-            }
-            else if (hand.isRight() && tmpswipeVector.magnitude() > 200) {
-                if (flag) {
-                    flag = false;
-                    swipeVector = tmpswipeVector;
-                    swipeSpead = swipeVector.magnitude() / 200;
-                }
+                double dist = posi0.distanceTo(posi1);
+                tmpCenter = (posi0 + posi1) / 2;
+                lengthL = dist / 20;
+                printf("left cube : %f\n", lengthL);
             }
             else {
-                flag = true;
+                if (tmpSwipeV.magnitude() > 500) {
+                    if (flag) {
+                        flag = false;
+                        swipeVector = tmpSwipeV;
+                        swipeCenter = tmpCenter - posi1;
+                        swipeCenter.z = -swipeCenter.z;
+                    }
+                    swipeSpead = tmpSwipeS / 200;
+
+                    printf("sV x:%f y:%f z:%f \n", swipeVector.x, swipeVector.y, swipeVector.z);
+                }
+                else {
+                    if (!flag) {
+                        flag = true;
+                        swipeSpead = 1;
+                    }
+
+
+                }
+
+                printf("%f\n", swipeSpead);
+
+                double dist = posi0.distanceTo(posi1);
+                lengthR = dist / 15;
+                //printf("right cube : %f\n", lengthR);
+
             }
+
 
         }
 
@@ -120,7 +142,6 @@ void SampleListener::onFrame(const Controller& controller) {
         }
 
     }
-    printf("sS:%f\n", swipeSpead);
 
 }
 

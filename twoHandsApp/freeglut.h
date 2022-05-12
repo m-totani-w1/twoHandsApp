@@ -4,7 +4,4 @@ void timer(int timerID);
 void keyboard(unsigned char key, int x, int y);
 void mouseButton(int button, int state, int x, int y);
 void mouseDrag(int x, int y);
-void myInit(char* windowTitle); 
-
-
-
+void myInit(char* windowTitle);

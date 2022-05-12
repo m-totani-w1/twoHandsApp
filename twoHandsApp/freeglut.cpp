@@ -1,4 +1,3 @@
-
 #include <math.h>
 #include <GL/glut.h>
 #include <GL/gl.h>
@@ -31,9 +30,9 @@ void display(void)
     swipeVector = swipeVector.normalized();
     swipeCenter = swipeCenter.normalized();
     Leap::Vector RotateAxis = swipeVector.cross(swipeCenter);
-        printf("sV x:%f y:%f z:%f \n", swipeVector.x, swipeVector.y, swipeVector.z);
-        printf("sC x:%f y:%f z:%f \n", swipeCenter.x, swipeCenter.y, swipeCenter.z);
-        printf("RA x:%f y:%f z:%f \n\n", RotateAxis.x, RotateAxis.y, RotateAxis.z);
+    //    printf("sV x:%f y:%f z:%f \n", swipeVector.x, swipeVector.y, swipeVector.z);
+    //    printf("sC x:%f y:%f z:%f \n", swipeCenter.x, swipeCenter.y, swipeCenter.z);
+    //    printf("RA x:%f y:%f z:%f \n\n", RotateAxis.x, RotateAxis.y, RotateAxis.z);
 
         //陰影ON-----------------------------
     glEnable(GL_LIGHTING);
@@ -237,4 +236,3 @@ void myInit(char* windowTitle)
       /* 視野角45度, 縦横比 aspect，描画前面までの奥行 1.0，描画背面までの奥行 20.0 */
     glEnable(GL_DEPTH_TEST);        /* 隠面消去を有効にする */
 }
-
