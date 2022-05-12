@@ -39,7 +39,7 @@ void SampleListener::onFrame(const Controller& controller) {
             handList.count(), allFingerList.count(), gesturesInFrame.count());
 
         int i, j;
-
+        Vector tmpswipeVector = { 0,0,0 };
 
 
         //手と指の処理
@@ -52,6 +52,7 @@ void SampleListener::onFrame(const Controller& controller) {
             Vector tmpCenter = { 0,0,0 };
 
 
+
             //個別の手の情報を出力する
             printf("  hand[%d] (%6.1f,%6.1f,%6.1f), fingers:%d\n",
                 i, handCenter.x, handCenter.y, handCenter.z, fingerList.count());
@@ -61,32 +62,33 @@ void SampleListener::onFrame(const Controller& controller) {
 
                 if (j == 0) {
                     posi0 = currentPosition;
-                    fing[0][0] = posi0.x / 5;
-                    fing[0][1] = posi0.y / 5 - 30;
                 }
                 else if (j == 1) {
+                    tmpswipeVector = finger.tipVelocity();
                     posi1 = currentPosition;
-                    fing[1][0] = posi1.x / 5;
-                    fing[1][1] = posi1.y / 5 - 30;
                 }
 
                 //個別の指の情報を出力する
                 printf("    finger[%d] (%6.1f,%6.1f,%6.1f)\n",
-                    j, currentPosition.x / 5, currentPosition.y / 5 - 30, currentPosition.z);
+                    j, currentPosition.x, currentPosition.y, currentPosition.z);
 
             }
-            tmpCenter = (posi0 + posi1) / 2;
-            for (int j = 0; j < 5;j++) {
-                double pick = pow(posi0.x - posi1.x, 2.0) + pow(posi0.y - posi1.y, 2.0);
-                double dist = pow(point[j][0] - tmpCenter.x/5, 2.0) + pow(point[j][1] - tmpCenter.y / 5 - 30, 2.0);
-                printf("pick: %f  dist: %f\n", pick, dist);
-                if (dist < 1000 && pick < 300) {
-                    point[j][0] = tmpCenter.x / 5;
-                    point[j][1] = tmpCenter.y / 5 - 30;
+
+
+            if (hand.isLeft()) {
+                lengthL = posi0.distanceTo(posi1) / 25;
+                swipeCenter = (posi0 + posi1) / 2;
+            }
+            else if (hand.isRight() && tmpswipeVector.magnitude() > 200) {
+                if (flag) {
+                    flag = false;
+                    swipeVector = tmpswipeVector;
+                    swipeSpead = swipeVector.magnitude() / 200;
                 }
             }
-            
-
+            else {
+                flag = true;
+            }
 
         }
 
@@ -118,6 +120,7 @@ void SampleListener::onFrame(const Controller& controller) {
         }
 
     }
+    printf("sS:%f\n", swipeSpead);
 
 }
 

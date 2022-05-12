@@ -24,6 +24,11 @@ extern float CameraY;            /* カメラの位置（Y座標） */
 extern float CameraZ;            /* カメラの位置（Z座標） */
 extern float BoxRotate;          /* 箱の回転角 */
 
-extern float point[6][2];
-extern float fing[2][2];
+extern float lengthL;              /* 左手の人指し指と親指の幅 */
+extern float lenghtR;              /* 左手の人指し指と親指の幅 */
+extern float swipeSpead;           /* スワイプするスピード */
+extern Vector swipeVector;         /* スワイプする速度 */
+extern Vector swipeCenter;         /* スワイプした指から中心へのベクトル */
+
+extern bool flag;
 

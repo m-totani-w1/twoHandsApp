@@ -31,9 +31,9 @@ void display(void)
     swipeVector = swipeVector.normalized();
     swipeCenter = swipeCenter.normalized();
     Leap::Vector RotateAxis = swipeVector.cross(swipeCenter);
-    //    printf("sV x:%f y:%f z:%f \n", swipeVector.x, swipeVector.y, swipeVector.z);
-    //    printf("sC x:%f y:%f z:%f \n", swipeCenter.x, swipeCenter.y, swipeCenter.z);
-    //    printf("RA x:%f y:%f z:%f \n\n", RotateAxis.x, RotateAxis.y, RotateAxis.z);
+        printf("sV x:%f y:%f z:%f \n", swipeVector.x, swipeVector.y, swipeVector.z);
+        printf("sC x:%f y:%f z:%f \n", swipeCenter.x, swipeCenter.y, swipeCenter.z);
+        printf("RA x:%f y:%f z:%f \n\n", RotateAxis.x, RotateAxis.y, RotateAxis.z);
 
         //陰影ON-----------------------------
     glEnable(GL_LIGHTING);
