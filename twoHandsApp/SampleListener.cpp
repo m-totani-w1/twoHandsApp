@@ -83,7 +83,7 @@ void SampleListener::onFrame(const Controller& controller) {
                 printf("left cube : %f\n", lengthL);
             }
             else {
-                if (tmpSwipeV.magnitude() > 500) {
+                if (tmpSwipeS > 500) {
                     if (flag) {
                         flag = false;
                         swipeVector = tmpSwipeV;
@@ -94,10 +94,10 @@ void SampleListener::onFrame(const Controller& controller) {
 
                     printf("sV x:%f y:%f z:%f \n", swipeVector.x, swipeVector.y, swipeVector.z);
                 }
-                else {
+                else if(tmpSwipeS < 50) {
                     if (!flag) {
                         flag = true;
-                        swipeSpead = 1;
+
                     }
 
 
