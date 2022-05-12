@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "twoHandsApp", "twoHandsApp\twoHandsApp.vcxproj", "{E22B90C5-5D30-44CD-9FDE-7505BFCA2A3B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "porigonApp", "porigon\porigon.vcxproj", "{011B4501-5A77-4290-A179-B38B02AAD37B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E22B90C5-5D30-44CD-9FDE-7505BFCA2A3B}.Debug|x64.ActiveCfg = Debug|x64
-		{E22B90C5-5D30-44CD-9FDE-7505BFCA2A3B}.Debug|x64.Build.0 = Debug|x64
-		{E22B90C5-5D30-44CD-9FDE-7505BFCA2A3B}.Debug|x86.ActiveCfg = Debug|Win32
-		{E22B90C5-5D30-44CD-9FDE-7505BFCA2A3B}.Debug|x86.Build.0 = Debug|Win32
-		{E22B90C5-5D30-44CD-9FDE-7505BFCA2A3B}.Release|x64.ActiveCfg = Release|x64
-		{E22B90C5-5D30-44CD-9FDE-7505BFCA2A3B}.Release|x64.Build.0 = Release|x64
-		{E22B90C5-5D30-44CD-9FDE-7505BFCA2A3B}.Release|x86.ActiveCfg = Release|Win32
-		{E22B90C5-5D30-44CD-9FDE-7505BFCA2A3B}.Release|x86.Build.0 = Release|Win32
+		{011B4501-5A77-4290-A179-B38B02AAD37B}.Debug|x64.ActiveCfg = Debug|x64
+		{011B4501-5A77-4290-A179-B38B02AAD37B}.Debug|x64.Build.0 = Debug|x64
+		{011B4501-5A77-4290-A179-B38B02AAD37B}.Debug|x86.ActiveCfg = Debug|Win32
+		{011B4501-5A77-4290-A179-B38B02AAD37B}.Debug|x86.Build.0 = Debug|Win32
+		{011B4501-5A77-4290-A179-B38B02AAD37B}.Release|x64.ActiveCfg = Release|x64
+		{011B4501-5A77-4290-A179-B38B02AAD37B}.Release|x64.Build.0 = Release|x64
+		{011B4501-5A77-4290-A179-B38B02AAD37B}.Release|x86.ActiveCfg = Release|Win32
+		{011B4501-5A77-4290-A179-B38B02AAD37B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,4 +14,26 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\twoHandsApp\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\twoHandsApp\freeglut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\twoHandsApp\SampleListener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\twoHandsApp\freeglut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\twoHandsApp\Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\twoHandsApp\SampleListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

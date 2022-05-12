@@ -21,17 +21,15 @@ int   yBegin = 0;               /* マウスドラッグの始点Y座標 */
 int   PressButton = 0;          /* 現在押されているマウスボタン（1:左,2:中,3:右） */
 float CameraAzimuth = 90.0;   /* カメラの位置（方位角） */
 float CameraElevation = 0.0;    /* カメラの位置（仰角） */
-float CameraDistance = 5.0;    /* カメラの位置（原点からの距離） */
+float CameraDistance = 20.0;    /* カメラの位置（原点からの距離） */
 float CameraX = 0.0;            /* カメラの位置（X座標） */
 float CameraY = 0.0;            /* カメラの位置（Y座標） */
-float CameraZ = 10.0;            /* カメラの位置（Z座標） */
+float CameraZ = 19.0;            /* カメラの位置（Z座標） */
 float BoxRotate = 0.0;          /* 箱の回転角 */
 
-float lengthL = 1;       /* 左の一辺の長さ */
-float lengthR = 1;        /* 右の一辺の長さ */
-float swipeSpead = 1;           /* 人差し指のスワイプの速さ */
-Vector swipeVector = { 0,0,1 };          /* 右手の人差し指のスワイプの速度 */
-Vector swipeCenter = { 1,1,0 };         /* 回転体の中心方向を指すベクトル*/
+float point[6][2] = { {0,5},{-4,3},{-4,-3},{0,-5},{4,-3},{4,3} };
+float fing[2][2] = { {100,100},{100,100} };
+
 bool flag = true;
 
 //必要だろうか。。。？
