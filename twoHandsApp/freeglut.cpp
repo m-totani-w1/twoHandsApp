@@ -27,36 +27,39 @@ void display(void)
         0.0, 0.0, 0.0,  /* 注視点の位置 */
         0.0, 1.0, 0.0); /* カメラ上方向のベクトル */
 
-    //陰影ON-----------------------------
-    //glEnable(GL_LIGHTING);
-    //glEnable(GL_LIGHT0);//光源0を利用
+    /* 回転方向と速度を計算*/
+    swipeVector = swipeVector.normalized();
+    swipeCenter = swipeCenter.normalized();
+    Leap::Vector RotateAxis = swipeVector.cross(swipeCenter);
+    //    printf("sV x:%f y:%f z:%f \n", swipeVector.x, swipeVector.y, swipeVector.z);
+    //    printf("sC x:%f y:%f z:%f \n", swipeCenter.x, swipeCenter.y, swipeCenter.z);
+    //    printf("RA x:%f y:%f z:%f \n\n", RotateAxis.x, RotateAxis.y, RotateAxis.z);
+
+        //陰影ON-----------------------------
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);//光源0を利用
     //-----------------------------------
 
-/* ポリゴンの描画 1 */
-    glPointSize(20);
-    glBegin(GL_POINTS);
-    glVertex2f(point[0][0], point[0][1]);
-    glVertex2f(point[1][0], point[1][1]);
-    glVertex2f(point[2][0], point[2][1]);
-    glVertex2f(point[3][0], point[3][1]);
-    glVertex2f(point[4][0], point[4][1]);
-    glVertex2f(point[5][0], point[5][1]);
-    glVertex2f(fing[0][0], fing[0][1]);
-    glVertex2f(fing[1][0], fing[1][1]);
-    glEnd();
-
-    glBegin(GL_LINE_LOOP);
-    glVertex2f(point[0][0], point[0][1]);
-    glVertex2f(point[1][0], point[1][1]);
-    glVertex2f(point[2][0], point[2][1]);
-    glVertex2f(point[3][0], point[3][1]);
-    glVertex2f(point[4][0], point[4][1]);
-    glVertex2f(point[5][0], point[5][1]);
-    glEnd();
+/* 立方体の描画 1 */
+    glPushMatrix();                /* 描画位置を保存 */
+    glColor3f(0.0, 1.0, 0.0);       /* 描画色を白にする */
+    glTranslatef(0.0, 0.0, 0.0);    /* 描画位置をX方向に1.0移動 */
+    glRotatef(BoxRotate, RotateAxis.x, RotateAxis.y, RotateAxis.z);   /* BoxRotate(度)回転 */
+    glutSolidCube(lengthL);         /* 立方体を描画 */
+    glPopMatrix();                 /* 描画位置を戻す */
+    //printf("x:%f y:%f z:%f \n", RotateAxis.x, RotateAxis.y, RotateAxis.z);
 
 
-    //陰影OFF-----------------------------
-    //glDisable(GL_LIGHTING);
+//    /* 立方体の描画 2 */
+//    glPushMatrix();                /* 描画位置を保存 */
+//    glColor3f(1.0, 0.0, 0.0);       /* 描画色を赤にする */
+//    glTranslatef(0.5, 0.0, 0.0);    /* 描画位置をX方向に1.0移動 */
+//    glRotatef(BoxRotate, 0.5, 1.0, 0.0);    /* BoxRotate(度)回転 */
+//    glutWireCube(lengthR);             /* ワイヤーの立方体を描画 */
+//    glPopMatrix();                 /* 描画位置を戻す */
+
+      //陰影OFF-----------------------------
+    glDisable(GL_LIGHTING);
     //-----------------------------------
 
 
@@ -75,6 +78,9 @@ void timer(int timerID)
 {
     /* 次のタイマーを15ミリ秒後に設定 */
     glutTimerFunc(15, timer, 0);
+
+    /* 手の速さに合せて回転速度を変える*/
+    BoxRotate += swipeSpead;
 
     /* オブジェクトの回転角度を1.0度ずつ増加させる */
 
@@ -201,7 +207,7 @@ void mouseDrag(int x, int y)
 void myInit(char* windowTitle)
 {
     /* ウインドウのサイズ */
-    int winWidth = 800;
+    int winWidth = 600;
     int winHeight = 600;
     /* ウインドウの縦横の比を計算 */
     float aspect = (float)winWidth / (float)winHeight;
